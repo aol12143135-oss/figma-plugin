@@ -1,0 +1,179 @@
+جيد — أقدّم لك هنا ثلاثة مخرجات جاهزة الآن:
+
+A) مستند UX_BRIEF بصيغة Markdown — انسخه بالكامل إلى ملف .md أو إلى محرر (أو لصقه في Word/Google Docs).  
+B) ملف tokens لـ Figma (JSON) جاهز للاستيراد عبر Figma Tokens plugin أو للاستخدام كمرجع.  
+C) تعليمات خطوة‑ب‑خطوة سريعة لإنشاء Figma Starter واستيراد الـ tokens تلقائياً.
+
+انسخ كل قسم كما هو للاستخدام المباشر.
+
+----------------------------------------------------------------
+A) UX_BRIEF (Markdown) — انسخ بالكامل إلى ملف UX_brief.md
+
+# UX_BRIEF — دليل تصميم واجهات المستخدم  
+**مشروع:** دليل مطاعم صنعاء (PWA + iOS/Android)  
+**الهدف:** تطبيق يعرض أسماء، مواقع، صور، ساعات، وأنواع المطبخ للمطاعم في صنعاء، مع ميزة محاكاة الموقع للسائقين (90 دقيقة افتراضياً).  
+**المستخدمون:** زبائن عامة، سائقو توصيل، مشرفو النظام.
+
+---
+
+## 1. ملخّص المشروع
+- اسم المشروع: دليل مطاعم صنعاء  
+- النوع: PWA + تطبيقات أصلية (React/React Native أو Ionic/Capacitor موصى به)  
+- الميزة المميزة: Simulate Location داخل التطبيق (جلسة مؤقتة 90 دقيقة، لا تغيّر موقع الجهاز النظامي)
+
+## 2. Personas
+- Ahmed — زبون محلي، يريد معلومات سريعة وصور.  
+- Samir — سائق توصيل، يستخدم المحاكاة للحصول على فرص توصيل محليّة.  
+- Lina — مشرفة النظام، تدير القاعدة وتتابع جلسات المحاكاة.
+
+## 3. User Flows
+- Flow A — تصفح: فتح التطبيق → بحث → صفحة مطعم → اتصال/اتجاهات.  
+- Flow B — تسجيل: إدخال الإيميل → استلام رابط/رمز → تفعيل → دخول.  
+- Flow C — سائق يفعل المحاكاة: اختيار مطعم → تأكيد → شريط حالة 90 دقيقة → إيقاف.  
+- Flow D — مشرف: استيراد CSV → إضافة/تحرير مطعم → مراجعة جلسات.
+
+## 4. الشاشات الأساسية (Wireframes)
+- Splash  
+- Home (map mini + list)  
+- Restaurant Details  
+- Search Results (map + list)  
+- Driver Dashboard (simulate modal)  
+- Simulation Active state (banner)  
+- Auth (email entry + confirm)  
+- Admin Panel (CSV import, sessions, restaurants)
+
+## 5. Components (مشتقات واجهة)
+- Header (logo, search, profile)  
+- Search Bar  
+- Filter Chips  
+- Restaurant Card (image + info)  
+- Image Carousel  
+- Top Banner (Simulation status)  
+- Modal / Bottom Sheet (confirm)  
+- FAB (simulate)  
+- Table rows (Admin)
+
+## 6. Design Tokens (ألوان وخطوط)
+- Primary: `#FF6B00`  
+- Accent: `#FFC857`  
+- Text Primary: `#222222`  
+- Background: `#FFFFFF`  
+- Banner Simulation: `#FFE9A8`  
+- Font: Tajawal / Cairo / Noto Sans Arabic  
+- Sizes: H1 24px, H2 18px, Body 15px, Small 13px
+
+## 7. Layout — Home (mobile)
+- Header (56px) → Search → Filters → Map mini (220px) → Cards list → FAB → Persistent Simulation Banner
+
+## 8. Microcopy أساسي
+- Banner: `أنت تتصفح كموقع: {restaurant_name} — ينتهي بعد {HH:MM} — إيقاف`  
+- Confirm modal: `ستتصفح كموقع {restaurant_name} لمدة {duration} دقيقة. هذه المحاكاة تُستخدم فقط داخل التطبيق ولا تُغيّر موقع جهازك.`  
+- Auth: `أدخل بريدك لتسجيل الدخول. سنرسل لك رابط لتأكيد البريد.`
+
+## 9. Accessibility & Performance
+- تأكد من نسب تباين مناسبة، أحجام خطوط قابلة للتكبير، lazy-loading للصور، CDN للصور.
+
+## 10. Assets المطلوبة
+- Logo (SVG), app icons (multisize), placeholder images (3–5), marker icons، UI icons (phone, share, map, verified, ...).
+
+## 11. Handoff Notes
+- قدّم design tokens (JSON) للمطورين.  
+- صدر icons كـ SVG + PNG @1x/@2x/@3x.  
+- وثّق الحالات (success/error/empty states) في صفحة منفصلة.
+
+---
+
+> حفظ: انسخ هذا الملف كنقطة انطلاق للـ UX_BRIEF.docx أو لصقه إلى Figma description.
+
+----------------------------------------------------------------
+B) Figma Tokens JSON (انسخ واحفظ ك file tokens.json)  
+(مناسب للاستيراد عبر Figma Tokens plugin أو للاستخدام المرجعي)
+
+{
+  "name": "sanaa-restaurants-tokens",
+  "global": {
+    "color": {
+      "primary": { "value": "#FF6B00" },
+      "accent": { "value": "#FFC857" },
+      "text_primary": { "value": "#222222" },
+      "background": { "value": "#FFFFFF" },
+      "muted": { "value": "#F5F6F7" },
+      "banner_simulation": { "value": "#FFE9A8" },
+      "success": { "value": "#2ECC71" },
+      "danger": { "value": "#E74C3C" }
+    },
+    "font": {
+      "family": { "value": "Tajawal, Cairo, Noto Sans Arabic, sans-serif" },
+      "h1": { "size": 24, "weight": 700, "lineHeight": 32 },
+      "h2": { "size": 18, "weight": 600, "lineHeight": 24 },
+      "body": { "size": 15, "weight": 400, "lineHeight": 22 },
+      "small": { "size": 13, "weight": 400, "lineHeight": 18 }
+    },
+    "spacing": {
+      "xs": { "value": "4" },
+      "sm": { "value": "8" },
+      "md": { "value": "16" },
+      "lg": { "value": "24" },
+      "xl": { "value": "32" }
+    },
+    "radii": {
+      "small": { "value": "6" },
+      "button": { "value": "8" },
+      "card": { "value": "12" },
+      "circle": { "value": "999" }
+    }
+  }
+}
+
+----------------------------------------------------------------
+C) تعليمات سريعة لإنشاء Figma Starter واستيراد الـ tokens
+
+1) تحضير:
+- سجل/افتح حساب Figma، ثم اضغط New File -> سمّه "Sanaa Restaurants — Starter".
+
+2) تثبيت Plugins (في Figma):
+- فتح القائمة: Plugins → Manage Plugins → Install:
+  - "Figma Tokens" (للاستيراد السريع للـ tokens)
+  - "Icons8" أو "Feather Icons" (اختياري لأيقونات افتراضية)
+  - "Content Reel" (لملء نصوص/صور تجريبية)
+
+3) إنشاء Pages (أسفل اليسار):
+- Cover & Project Info
+- Design System
+- Mobile (375)
+- Tablet / Desktop
+- Admin & Assets
+
+4) استيراد tokens:
+- افتح plugin "Figma Tokens" → Import → اختر ملف tokens.json (الذي حفظته أعلاه). بعد الاستيراد ستجد الألوان والخطوط والمسافات جاهزة كـ tokens.
+- في صفحة Design System أنشئ Frame 375x812، ثم اسحب نماذج الألوان من tokens لاستخدامها كـ swatches.
+- أنشئ Text Styles يدوياً حسب القيم في tokens (H1, H2, Body, Small) واختَر الخط (Tajawal / Cairo). إن لم يتوفر الخط محلياً، استبدل مؤقتاً بـ Noto Sans Arabic أو أي خط عربي متاح.
+
+5) بناء Components أساسيّة:
+- Header: مستطيل 375x56، ضع شعار/أيقونات.
+- Search Bar: مستطيل 48xfull، نص placeholder.
+- Card: مستطيل 96xfull مع صورة 96x96 وبلوك نص.
+- Banner Simulation: مستطيل عرض كامل بخلفية token.banner_simulation مع نص timer.
+
+6) صفحات (Frames) جاهزة:
+- في صفحة Mobile (375) أنشئ Frames:
+  - Splash (375x812)
+  - Home
+  - Restaurant Details
+  - Driver Dashboard (مع modal)
+  - Auth
+
+7) ربط Components:
+- حوّل الأزرار والبطاقات إلى Components (Ctrl/Cmd+Alt+K) وضع Variants (Default/Hover/Disabled).
+- استخدم Auto Layout للعناصر القائمة لتسهيل التعديل.
+
+8) Export / Handoff:
+- حدّد أيقونات/لوحات → Export → اختر SVG للـ icons و PNG للصور متعددة الدقة.  
+- شارك ملف Figma عبر الرابط مع فريق التطوير.
+
+----------------------------------------------------------------
+هل تريد الآن:
+1) أن أعدّ ملف OpenAPI (YAML/JSON) لمخطط الـ API الذي زودتك به سابقًا (جاهز للتحميل/نسخ)؟  
+2) أن أضع لك ملف ZIP متضمن: tokens.json + UX_brief.md + example CSV template كنص هنا لتنسخه؟  
+
+أخبرني أي خيار تفضّل وأجهّزه فوراً.
